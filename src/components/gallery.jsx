@@ -30,7 +30,7 @@ const inputStyle = {
 }
 
 const masonryOptions = {
-    transitionDuration: 1
+    transitionDuration: 0
 };
 
 const masonStyle = {
@@ -98,16 +98,16 @@ function Gallery() {
         data.map((art, i) => {
           return (
             <div key={art.id} style={cardStyle}>
-            <Link to={`/${art.objectNumber}`}>
+            <Link to={`/${art.objectNumber}`} style={{ textDecoration: 'none' }}>
               <StackCard
                 color={"#ffffff"}
                 images={card_arr}
                 width="250"
                 height="140"
                 direction={'spread'}
-                duration='1'
+                duration='0'
               >
-                  <Card style={{ maxWidth: "240px" }} outline={true} small={true}>
+                  <Card style={{ maxWidth: "240px", textDecoration: 'none' }} outline={true} small={true}>
                     <CardHeader>{art.principalOrFirstMaker}</CardHeader>
                     <CardImg src={art.headerImage.url} style={img_style}/>
                     <CardBody>

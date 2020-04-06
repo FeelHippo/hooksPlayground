@@ -42,13 +42,13 @@ function Detail(props) {
             <article className="p1">
               <h1>About the author</h1>
               <ul>
-                <li>Place of Birth: {data.principalMakers.placeOfBirth}</li>
-                <li>Date of Birth: {data.principalMakers.dateOfBirth}</li>
-                <li>Date of Death: {data.principalMakers.dateOfDeath}</li>
-                <li>Place of Death: {data.principalMakers.placeOfDeath}</li>
-                <li>Occupation: {data.principalMakers.occupation}</li>
+                <li>Place of Birth: {data.principalMakers[0].placeOfBirth}</li>
+                <li>Date of Birth: {data.principalMakers[0].dateOfBirth}</li>
+                <li>Date of Death: {data.principalMakers[0].dateOfDeath}</li>
+                <li>Place of Death: {data.principalMakers[0].placeOfDeath}</li>
+                <li>Occupation: {data.principalMakers[0].occupation}</li>
                 <li>Production place: {data.productionPlaces[0]}</li>
-                <li>Dating; {data.dating[0]}</li>
+                <li>Dating; {data.dating.presentingDate}</li>
               </ul>
             </article>
             <article className="p2">
