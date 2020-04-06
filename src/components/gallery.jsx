@@ -21,8 +21,18 @@ import { Alert } from "shards-react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "shards-ui/dist/css/shards.min.css";
-import './loader.css'
+import './loader.css';
+import BackgroundImage from './images/gogh.jpg'
 import api from '../api';
+
+const homePage = {
+  position: 'absolute',
+  margin: '0',
+  width: '100vw',
+  height: 'auto',
+  backgroundImage: `url(${BackgroundImage})`,
+  backgroundSize: 'cover'
+}
 
 const inputStyle = {
   width: '50%',
@@ -36,11 +46,12 @@ const masonryOptions = {
 
 const masonStyle = {
   width: '80%',
+  padding: '0',
   margin: '2rem auto'
 }
 
 const cardStyle = {
-  margin: '8rem auto'
+  margin: '2rem 2rem'
 }
 
 const img_style = {
@@ -48,9 +59,6 @@ const img_style = {
   margin: '0 auto',
   opacity: '0.5'
 }
-
-const card_arr = ["first", "second", "third", "fourth"]
-
 
 const { getMany } = api();
 
@@ -72,7 +80,7 @@ function Gallery() {
   }, [option, search]);
 
   return (
-    <div>
+    <div style={homePage}>
       <InputGroup style={inputStyle}>
         <FormInput placeholder="What are you looking for?" value={search} onChange={ e => setSearch(e.target.value)} />
         <Dropdown
@@ -101,24 +109,15 @@ function Gallery() {
           return (
             <div key={art.id} style={cardStyle}>
             <Link to={`/${art.objectNumber}`} style={{ textDecoration: 'none' }}>
-              <StackCard
-                color={"#ffffff"}
-                images={card_arr}
-                width="250"
-                height="140"
-                direction={'spread'}
-                duration='0'
-              >
-                  <Card style={{ maxWidth: "240px", textDecoration: 'none' }} outline={true} small={true}>
-                    <CardHeader>{art.principalOrFirstMaker}</CardHeader>
-                    <CardImg src={art.headerImage.url} style={img_style}/>
-                    <CardBody>
-                      <CardTitle>{art.longTitle}</CardTitle>
-                      <p>{art.title}</p>
-                    </CardBody>
-                    <CardFooter>{art.productionPlaces}</CardFooter>
-                  </Card>
-              </StackCard>
+                <Card style={{ maxWidth: "240px", textDecoration: 'none' }} outline={true} small={true}>
+                  <CardHeader>{art.principalOrFirstMaker}</CardHeader>
+                  <CardImg src={art.headerImage.url} style={img_style}/>
+                  <CardBody>
+                    <CardTitle>{art.longTitle}</CardTitle>
+                    <p>{art.title}</p>
+                  </CardBody>
+                  <CardFooter>{art.productionPlaces}</CardFooter>
+                </Card>
             </Link>
 
             </div>
