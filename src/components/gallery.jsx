@@ -20,7 +20,8 @@ import {
 import { Alert } from "shards-react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import "shards-ui/dist/css/shards.min.css"
+import "shards-ui/dist/css/shards.min.css";
+import './loader.css'
 import api from '../api';
 
 const inputStyle = {
@@ -62,9 +63,10 @@ function Gallery() {
 
   useEffect(() => {
     async function fetchData() {
+      setIsLoading(true);
       const res = await getMany(option, search)
       setData(res.artObjects);
-      console.log(res);
+      setIsLoading(true);
     }
     fetchData();
   }, [option, search]);
@@ -94,7 +96,7 @@ function Gallery() {
           options={masonryOptions}
           style={masonStyle}
       >
-      {data &&
+      {data ?
         data.map((art, i) => {
           return (
             <div key={art.id} style={cardStyle}>
@@ -122,6 +124,7 @@ function Gallery() {
             </div>
           )
         })
+        : <div className="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
       }
       </Masonry>
     </div>

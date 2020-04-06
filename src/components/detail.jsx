@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactIntense from 'react-intense';
-import './detail_style.css'
+import './detail_style.css';
+import './loader.css'
 import api from '../api'
 
 const { getOne } = api();
